@@ -3,6 +3,8 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 merely.plugin('merely-react-redux', (options, isDev) => {
+  
+  let devStore
 
   merely.filter('wrapRootComponent', (root, ctx) => {
 
@@ -20,7 +22,9 @@ merely.plugin('merely-react-redux', (options, isDev) => {
 
     // if(isDev) {
 
-      const store = createStore(ctx.app.getReducers(), ctx.app.getDefaultState());
+      const store = (isDev && devStore) || createStore(ctx.app.getReducers(), ctx.app.getDefaultState());
+      
+      if(isDev) devStore = store
 
       window.store = store;
 

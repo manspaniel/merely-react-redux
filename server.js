@@ -1,5 +1,6 @@
 import merely from 'merely'
-import { createStore } from 'redux';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
 /*
 
@@ -35,12 +36,14 @@ merely.plugin('merely-react-redux', (options, isDev) => {
       throw new Error("You're using the 'merely-react-redux' plugin for Merely, however you must also export some extra functions from your main.js file! You're missing "+missingExports.join(', '));
     }
 
-    if(isDev) {
+    // if(isDev) {
 
       const store = createStore(ctx.app.getReducers(), ctx.app.getDefaultState());
       return <Provider store={store}>{root}</Provider>
 
-    }
+    // }
+    
+    // return root
 
   });
 
