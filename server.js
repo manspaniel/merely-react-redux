@@ -55,9 +55,4 @@ merely.plugin('merely-react-redux', (options, isDev) => {
     // ctx.reduxStore = ctx.
   });
 
-  merely.filter('getHeadContents', (contents) => {
-    contents.push("<style type='text/css' id='initialStyles'>" + styleSheet.rules().map(item => item.cssText).join('\n')+"</style>");
-    return contents;
-  });
-
 });
